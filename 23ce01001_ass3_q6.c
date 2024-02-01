@@ -1,37 +1,36 @@
-#include <stdio.h>
-
+#include<stdio.h>
 int main()
 {
-    int num,square,digits;
-    printf("Enter the number");
+    int num,i,p1,p2,sum,tag=0;
+    printf("Enter the number:");
     scanf("%d",&num);
-    square=num*num;
-    int temp=square;
-    digits=0;
-    while(temp>0){
-        temp=temp/10;
-        digits++;
+    int sq= num*num;
+    for(i=10;;i*=10)
+    {
+        p1=sq/i;
+        p2=sq%i;
+        if(p1>0)
+        {
+            if(p2!=0)
+            {
+                sum=p1+p2;
+                if(sum==num)
+                    tag=1;
+                else
+                    continue;
+                
+            }
+            else
+                continue;
+        }
+        else
+            break;
     }
-    printf("Digits:%d\n",digits);
+    if(tag==0)
+        printf("Not a Kaprekar Number");
+    else
+        printf("Kaprekar Number");
     
-    int divisor = 1;
-    for (int i = 0; i < (digits/2); i++) {
-        divisor *= 10;
-    }
-     if (digits % 2 != 0) {
-        
-        divisor *= 10;
-    }
-    printf("divisor:%d\n",divisor);
-    int n1 = square / divisor;
-    int n2 = square % divisor;
-
-    if(n1+n2==num){
-        printf("It is a Kaprekar Number.");
-    }
-        
-    else{
-        printf("It is not a Kaprekar Number");
-    }
     return 0;
+
 }
