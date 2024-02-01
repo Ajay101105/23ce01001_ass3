@@ -5,7 +5,13 @@ int main()
     printf("Enter the number:");
     scanf("%d",&num);
     int sq= num*num;
-    for(i=10;;i*=10)
+    if (num==1)
+    {
+        printf("Kaprekar Number");
+    }
+    else
+    {
+        for(i=10;;i*=10)
     {
         p1=sq/i;
         p2=sq%i;
@@ -30,6 +36,8 @@ int main()
         printf("Not a Kaprekar Number");
     else
         printf("Kaprekar Number");
+    
+    }
     
     return 0;
 
